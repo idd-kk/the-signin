@@ -59,6 +59,10 @@ button.signin:hover {
   background-color: rgba(30,30,30,0.8);
 }
 
+.modal.open {
+  display: inline-block;
+}
+
 .getstarted {
   display: block;
   width: 25em;
@@ -129,3 +133,4 @@ input.field.error {
   background-color: #f7d0cd;
   color: #111;
 }
+

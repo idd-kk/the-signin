@@ -15,13 +15,22 @@ Complete these steps to create a 'signin' prototype:
 
 ## Part 2
 
-1. Modify the `#submit` element from `type="button"` to `type="submit"`. When the user triggers a `submit`, event, _prevent_ the form from proceeding with it's _default_ behavior.
-2. On submit, only add the `.error` class to the elements that have a `value` of "" (blank, meaning any text will prevent an error)
-   - What happens if the user just adding spaces to the field? Find a function that will trim off the white spaces in a field to validate it.
-3. Prototype a validation by checking the two fields on `submit`. If both are "valid" (not blank), close the `#modal`, remove the `#signin` and append `textContent` to the `#hello` heading so it reads "Welcome, [USERNAME]", in a font that's half the current size
-   - Consider the various ways we could validate both fields, including the use of a boolean `var` as a switch
-4. Try validating a field by adding/removing `.error` immediately after the cursor leaves one of the individual `<input>` (rather than on submit)
-   - Consider this can be added individually to elements, but do so by writing one event listener/callback function using a loop
-5. Allow the user to click the `#modal` to close itself
-   - Consider what happens when two elements that are overlapping are both waiting for a click: Click events will "bubble" (propagate) up the DOM tree. How could we stop an event from triggering on it's parents?
-   - This will likely require a bit of web searching to solve
+1. In index.html change the #submit element from type="button" to type="submit". When the user triggers a submit, Event on the form#getstarted, prevent the form from proceeding with it's default behavior (which is redirecting away from the page)
+Remove the click listener from the button#submit created earlier and move the logic within it to this listener
+
+2. On submit of the form#getstarted, only add the .error class to the input.field elements that have a value of "" (blank, meaning any content within the field will prevent an error)
+Consider what should if the user just adds spaces to the field? Compare " " == "" in your console to test; then find a function that will trim the white spaces from a String to help validate this field
+
+3. Prototype the form validation by checking the two input.fields on submit of the form#getstarted. If both fields are "valid" (they not blank, not including "white space" characters), do the following:
+Remove the #modal from view
+Remove the button#signin from view
+Append textContent to the #hello heading so it reads "Welcome, [USERNAME]"
+Change the font-size of the #hello heading so that it's half the current size
+Consider the various ways we could validate both fields, including the use of a Boolean variable as a true or false status flag
+
+4. Try improving the user experience by adding/removing the .error class from an input.field immediately after the cursor leaves one of the individual <input> (rather than waiting for a submit event to occur)
+Consider the blur (opposite of focus) can be added individually to each input, but should be done so by writing one event listener/callback function and using a loop to apply to each of the input.field elements at the same time
+
+5. Allow the user to click the dark translucent background of the #modal block to have it close itself (but not the the form within it)
+Test this and see what happens when an element inside of another element (here, the form within the .modal) is clicked. Click events will "bubble" (propagate) up the DOM tree!
+Search for a way to stop an event (clicking the <form>) from bubbling to its parent (the .modal)
