@@ -63,29 +63,10 @@ $form.addEventListener(`submit`, event => {
     };
 });
 
-
-// $form.addEventListener(`submit`, event => {
-    
-//     event.preventDefault();
-
-//     if ($user.value.trim() == "") {
-//         $user.classList.add(`error`) 
-//     };
-
-//     if (user.value.trim() == "") {
-//         $pass.classList.add(`error`) 
-//     };
-
-//     if ($user.value.trim() && $pass.value.trim() !== "") {
-//         $modal.style.display = `none`;
-//         $signin.style.display = `none`;
-//         $hello.style.display = `block`;
-//         $hello.classList.add(`smol`);
-//         $hello.innerHTML = `Welcome, ${$user.value}!`;
-//     };
-// });
-
-
+$modal.addEventListener(`click`, event => {
+    $modal.style.background = `none`
+    $form.style.display = `block`
+})
 
 
 
