@@ -6,7 +6,7 @@ let $signin = document.querySelector(`.signin`)
 let $close = document.querySelector(`.close`)
 let $submit = document.querySelector(`.submit`)
 let $form = document.querySelector(`#getstarted`)
-
+let $hello = document.querySelector(`#hello`)
 
 //Functions 
 
@@ -36,29 +36,31 @@ $pass.addEventListener(`focus`, event => {
 let userName = $user.value;
 let passWord = $pass.value;
 
-//on submit prevent default behaviouse, check is value is "" (if true add .error), if both are not "" then remove modal and signin and add userName to `hello`.
+
 $form.addEventListener(`submit`, event => {
     
-    event.preventDefault()
+    event.preventDefault();
 
-    console.log(userName)
-    console.log(passWord)
+    console.log(userName);
+    console.log(passWord);
 
     if (userName === "") {
         $user.classList.add(`error`) 
-    }
+    };
 
     if (passWord === "") {
         $pass.classList.add(`error`) 
-    }
+    };
 
     if (userName && passWord !== "") {
-        $modal.style.display = `none`
-    }
-})
+        $modal.style.display = `none`;
+        $signin.style.display = `none`;
+        $hello.style.display = `block`;
+        $hello.innerHTML = `Hello, ${userName}!`;
+    };
+});
 
 
-// document.getElementById(`hello`).innerHTML = `Hello, ${userName}!`
 
 
 
