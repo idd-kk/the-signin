@@ -22,6 +22,10 @@ html {
   right: 0;
 }
 
+.hello.smol {
+  font: 400 4rem 'Oswald';
+}
+
 button.signin {
   display: block;
   border: none;

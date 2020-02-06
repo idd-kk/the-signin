@@ -1,53 +1,63 @@
-//open modal 
-document.querySelector('#signin').addEventListener(`click`, (event) => {
-    document.getElementById('modal').classList.toggle('open');
-} )
+//DOM references 
+let $modal = document.querySelector(`.modal`)
+let $user = document.querySelector(`#user`)
+let $pass = document.querySelector(`#pass`)
+let $signin = document.querySelector(`.signin`)
+let $close = document.querySelector(`.close`)
+let $submit = document.querySelector(`.submit`)
+let $form = document.querySelector(`#getstarted`)
+let $hello = document.querySelector(`#hello`)
 
-//close modal 
-document.querySelector('#close').addEventListener(`click`, (event) => {
-    document.getElementById('modal').classList.toggle('open');
-} )
+//Functions 
 
-//Finds *all* HTML elements with class="input.field"
-const allFeilds = document.querySelectorAll('input.field'); 
 
-// Will store the found Element references in an array-like structure. 
-document.querySelector('#submit').addEventListener(`click`, (event) => {
-    allFeilds.forEach(aFeild => {
-    aFeild.classList.add('error');
-    })
+
+//Event listeners 
+//show modal when 'sign in' is clicked 
+$signin.addEventListener(`click`, event => {
+    $modal.style.display = `block`
 })
 
-// Removes the `.error` class from any individual `<input>` when the cursor gives it `focus`
-
-// document.querySelector('input').addEventListener(`focus`, (event) => {
-//     document.getElementById('user').classList.remove('error')
-//     document.getElementById('pass').classList.remove('error')
-// })
-
-// const allInputs = document.querySelectorAll('.feild')
-// .addEventListener(`focus`, (event) => {
-    
-//     allInputs.forEach(aInput => {
-//     aInput.classList.remove('error');
-//     })             
-// })
-
-document.querySelectorAll(`.feild`).forEach($inpt => {
-    $inpt.addEventListener(`click`, evet => {
-        classList.remove(`error`)
+//hide modal when 'X' is clicked 
+$close.addEventListener(`click`, event => {
+    $modal.style.display = `none`
 })
 
-document.querySelectorAll(`.feild`).forEach($inpt => {
-    $inpt.addEventListener(`click`, evet => {
-        $inpt.classList.remove(`error`)
-    })
+// remove error on focus 
+$user.addEventListener(`focus`, event => {
+    $user.classList.remove(`error`)
+})
 
-// .setAttribute(`src`, `img/dice${int}.svg`);
+$pass.addEventListener(`focus`, event => {
+    $pass.classList.remove(`error`)
+})
 
-// document.querySelectorAll('input').addEventListener(`focus`, (event) => {
+
+$form.addEventListener(`submit`, event => {
     
-//     allInputs.forEach(aInput => {
-//     aInput.classList.remove('error');
-//     })             
-// })
+    event.preventDefault();
+
+    if ($user.value.trim() == "") {
+        $user.classList.add(`error`) 
+    };
+
+    if (user.value.trim() == "") {
+        $pass.classList.add(`error`) 
+    };
+
+    if ($user.value.trim() && $pass.value.trim() !== "") {
+        $modal.style.display = `none`;
+        $signin.style.display = `none`;
+        $hello.style.display = `block`;
+        $hello.classList.add(`smol`);
+        $hello.innerHTML = `Hello, ${$user.value}!`;
+    };
+});
+
+
+
+
+
+
+
+
