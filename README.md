@@ -21,16 +21,14 @@ Remove the click listener from the button#submit created earlier and move the lo
 2. On submit of the form#getstarted, only add the .error class to the input.field elements that have a value of "" (blank, meaning any content within the field will prevent an error)
 Consider what should if the user just adds spaces to the field? Compare " " == "" in your console to test; then find a function that will trim the white spaces from a String to help validate this field
 
-3. Prototype the form validation by checking the two input.fields on submit of the form#getstarted. If both fields are "valid" (they not blank, not including "white space" characters), do the following:
+3.Prototype the form validation by checking the two input.fields on submit of the form#getstarted. If both fields are "valid" (they not blank, not including "white space" characters), do the following:
 Remove the #modal from view
 Remove the button#signin from view
 Append textContent to the #hello heading so it reads "Welcome, [USERNAME]"
 Change the font-size of the #hello heading so that it's half the current size
 Consider the various ways we could validate both fields, including the use of a Boolean variable as a true or false status flag
-
-4. Try improving the user experience by adding/removing the .error class from an input.field immediately after the cursor leaves one of the individual <input> (rather than waiting for a submit event to occur)
+Try improving the user experience by adding/removing the .error class from an input.field immediately after the cursor leaves one of the individual <input> (rather than waiting for a submit event to occur)
 Consider the blur (opposite of focus) can be added individually to each input, but should be done so by writing one event listener/callback function and using a loop to apply to each of the input.field elements at the same time
-
-5. Allow the user to click the dark translucent background of the #modal block to have it close itself (but not the the form within it)
+Allow the user to click the dark translucent background of the #modal block to have it close itself (but not the the form within it)
 Test this and see what happens when an element inside of another element (here, the form within the .modal) is clicked. Click events will "bubble" (propagate) up the DOM tree!
 Search for a way to stop an event (clicking the <form>) from bubbling to its parent (the .modal)

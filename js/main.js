@@ -1,4 +1,5 @@
-//DOM references 
+//*** DOM references ***
+
 let $modal = document.querySelector(`.modal`)
 let $user = document.querySelector(`#user`)
 let $pass = document.querySelector(`#pass`)
@@ -8,11 +9,9 @@ let $submit = document.querySelector(`.submit`)
 let $form = document.querySelector(`#getstarted`)
 let $hello = document.querySelector(`#hello`)
 
-//Functions 
 
+//*** Event listeners *** 
 
-
-//Event listeners 
 //show modal when 'sign in' is clicked 
 $signin.addEventListener(`click`, event => {
     $modal.style.display = `block`
@@ -23,36 +22,68 @@ $close.addEventListener(`click`, event => {
     $modal.style.display = `none`
 })
 
-// remove error on focus 
-$user.addEventListener(`focus`, event => {
-    $user.classList.remove(`error`)
-})
+// fetch and store all .field 
+let inputFields = document.querySelectorAll(`.field`);
 
-$pass.addEventListener(`focus`, event => {
-    $pass.classList.remove(`error`)
-})
+// if any .feild value is "" upon blur add .error class otherwise remove .error 
+inputFields.forEach((thing) => {
+    thing.addEventListener('blur', (event) => {
+        if (thing.value.trim() == "") {
+            thing.classList.add(`error`)
+        } else {
+            thing.classList.remove(`error`)
+        }
+    });
+});
 
+// upon focus remove .error from any .feild 
+inputFields.forEach((thing) => {
+    thing.addEventListener('focus', (event) => {
+        thing.classList.remove(`error`)
+    });
+});
 
+// upon submit prevent default behaviour, if any .feild is empty add .error, if both are filled then do the thing 
 $form.addEventListener(`submit`, event => {
     
     event.preventDefault();
 
-    if ($user.value.trim() == "") {
-        $user.classList.add(`error`) 
-    };
-
-    if (user.value.trim() == "") {
-        $pass.classList.add(`error`) 
-    };
+    inputFields.forEach((thing) => {
+        if (thing.value.trim() == "") {
+            thing.classList.add(`error`) 
+        };
+    });
 
     if ($user.value.trim() && $pass.value.trim() !== "") {
         $modal.style.display = `none`;
         $signin.style.display = `none`;
         $hello.style.display = `block`;
         $hello.classList.add(`smol`);
-        $hello.innerHTML = `Hello, ${$user.value}!`;
+        $hello.innerHTML = `Welcome, ${$user.value}!`;
     };
 });
+
+
+// $form.addEventListener(`submit`, event => {
+    
+//     event.preventDefault();
+
+//     if ($user.value.trim() == "") {
+//         $user.classList.add(`error`) 
+//     };
+
+//     if (user.value.trim() == "") {
+//         $pass.classList.add(`error`) 
+//     };
+
+//     if ($user.value.trim() && $pass.value.trim() !== "") {
+//         $modal.style.display = `none`;
+//         $signin.style.display = `none`;
+//         $hello.style.display = `block`;
+//         $hello.classList.add(`smol`);
+//         $hello.innerHTML = `Welcome, ${$user.value}!`;
+//     };
+// });
 
 
 
